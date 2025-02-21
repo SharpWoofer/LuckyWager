@@ -74,7 +74,7 @@ function createPlayerElement(player) {
     div.className = 'player-card';
     div.innerHTML = `
         <div class="player-info">
-            <span>${player.name} - Bet: ${player.bet}</span>
+            <span>${player.name} - Bet: $${player.bet}</span>
             <button class="remove-player" onclick="removePlayer(${player.id})">×</button>
         </div>
         <div class="player-controls">
