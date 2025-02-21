@@ -321,14 +321,9 @@ input[type="text"] {
 }
 
 .remove-player {
-    position: absolute;
-    min-height: 44px;
-    min-width: 44px;
-    top: 10px;
-    right: 10px;
+    color: #dc3545;
     background: none;
     border: none;
-    color: var(--error-red);
     cursor: pointer;
     padding: 5px;
 }
