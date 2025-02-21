@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Wager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link id="lunar-theme" rel="stylesheet" href="styles.css">
+    <link id="normal-theme" rel="stylesheet" href="1styles.css" disabled>
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <label class="switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <div class="container">
+        <div id="role-selection" class="screen active">
+            <h1>Select Your Role</h1>
+            <div class="button-container">
+                <button onclick="selectRole('player')">Player</button>
+                <button onclick="selectRole('banker')">Banker</button>
+            </div>
+        </div>
+
+        <div id="player-screen" class="screen">
+            <div class="balance-container">
+                <h2>Balance: <span id="balance">0</span></h2>
+            </div>
+            
+            <div class="bet-container">
+                <label for="bet-amount">Bet Amount:</label>
+                <input type="range" id="bet-slider" min="0" max="20" value="1" step="0.5">
+                <input type="number" id="bet-amount" value="2">
+            </div>
+
+            <div class="action-buttons">
+                <button onclick="updateBalance(-2)">Lose x2</button>
+                <button onclick="updateBalance(-1)">Lose</button>
+                <button onclick="updateBalance(1)">Win</button>
+                <button onclick="updateBalance(2)">Win x2</button>
+                <button onclick="showCustomMultiplier()">Custom</button>
+            </div>
+
+            <div id="custom-multiplier" class="hidden">
+                <label for="multiplier">Custom Multiplier:</label>
+                <input type="range" id="multiplier-slider" min="-10" max="10" value="1" step="0.5">
+                <span id="multiplier-value">1x</span>
+                <button onclick="applyCustomMultiplier()">Apply</button>
+            </div>
+            <button class="end-session-btn" onclick="endPlayerSession()">End Session</button>
+        </div>
+
+        <div id="banker-screen" class="screen">
+            <div class="balance-container">
+                <h2>Banker Balance: <span id="banker-balance">0</span></h2>
+            </div>
+        
+            <div class="add-player-container">
+                <input type="text" id="new-player-name" placeholder="Player Name">
+                <input type="number" id="new-player-bet" placeholder="Bet Amount">
+                <button onclick="addPlayer()">Add Player</button>
+            </div>
+        
+            <div id="players-list" class="players-container">
+                <!-- Players will be added here dynamically -->
+            </div>
+            <button class="end-session-btn" onclick="endBankerSession()">End Session</button>
+        </div>
+        <div id="summary-screen" class="screen">
+            <div id="summary-result" class="summary-box"></div>
+            <div id="summary-details" class="summary-details"></div>
+            <button onclick="startNewSession()">Start New Session</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
